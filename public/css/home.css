@@ -1,0 +1,33 @@
+body{
+    font-family: "Lexend Giga", sans-serif;
+}
+
+#bdyy{
+    background-image: url("/Wallpaper.jpg");
+    background-size: cover;
+}
+
+#homeBody{
+    background-image: url("/bgImg.jpg");
+    background-size:cover
+}
+
+#bSign{
+    background-image: url("/download.gif");
+    background-size: cover;
+}
+
+#Lbg{
+    background-image: url("/Limg.jpg");
+    background-size: cover;
+}
+
+#Lform{
+    background-image: url("/bckgrnd.gif");
+    background-size: cover;
+}
+
+#getBg{
+    background-image: url("/huh.gif");
+    background-size: cover;
+}

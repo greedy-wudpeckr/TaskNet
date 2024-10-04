@@ -1,23 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-</head>
-<body>
-    <h2 style="margin-left : 50%; margin-top : 200px" >To Do App</h2>
-    <div style="display: flex; justify-content:space-evenly">
+<%- include("../includes/head.ejs") %>
+<body id="homeBody" class="">
+    <div class="mt-40 text-7xl text-white flex justify-center ">
+       <h2 class="bg-gradient-to-r from-black rounded">TaskNet</h2>
+       <img src="/bgg.gif" class="h-20 w-20 rounded" alt=""> 
+    </div>
+    <div class="flex justify-evenly mt-40 ">
+        <!-- Wrap the div in an anchor tag -->
+        <a href="/user/signup" class="no-underline">
+            <div dir="ltr" class="bg-white rounded-s-lg h-6 mt-12 p-6 transition ease-in-out delay-100 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-gradient-to-r from-black to-white duration-300 cursor-pointer">
+                <span class="mb-8">SignIn</span>
+            </div>
+        </a>
         <div>
-            <form action="/user/signup">
-                <button>SignIn</button>
-            </form>
+           <img class="h-30 w-60" src="/huh.gif" alt="">
         </div>
-        <div>
-            <form action="/user/login">
-                <button>LoginIn</button>
-            </form>
-        </div>
+        <!-- Wrap the div in an anchor tag -->
+        <a href="/user/login" class="no-underline">
+            <div dir="rtl" class="bg-white rounded-s-lg h-6 mt-10 p-6 transition ease-in-out delay-100 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-gradient-to-r from-black to-white duration-300 cursor-pointer">
+                <span class="mb-8">Login</span>
+            </div>
+        </a>
     </div>
 </body>
 </html>

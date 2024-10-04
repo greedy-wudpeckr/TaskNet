@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Todos</title>
+  <!-- Include Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 min-h-screen flex flex-col items-center p-6">
+  <form action="/user/logout" method="post" class="absolute top-6 right-6">
+    <button class="bg-red-500 text-white font-medium py-2 px-4 rounded-lg shadow-md hover:bg-red-600 transform hover:scale-105 transition-all duration-300">
+        Logout
+    </button>
+</form>
+  <!-- Page Heading -->
+  <h2 class="text-3xl text-white font-bold mb-8">Your Tasks</h2>
+
+  <!-- Styled Todo Table -->
+  <div class="overflow-x-auto w-full max-w-4xl">
+    <table class="table-auto w-full text-left bg-gray-800 rounded-lg shadow-lg">
+      <thead class="bg-gray-700 text-gray-300">
+        <tr>
+          <th class="px-6 py-3">Task</th>
+          <th class="px-6 py-3">Created At</th>
+          <th class="px-6 py-3">Completed</th>
+          <th class="px-6 py-3">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% data.forEach(todo => { %>
+          <tr class="border-b border-gray-600 hover:bg-gray-700 transition duration-300">
+            <td class="px-6 py-4 text-white"><%= todo.task %></td>
+            <td class="px-6 py-4 text-gray-300"><%= new Date(todo.createdAt).toLocaleString() %></td>
+            <td class="px-6 py-4">
+              <span class="<%= todo.completed ? 'text-green-500' : 'text-red-500' %> font-semibold">
+                <%= todo.completed ? 'Yes' : 'No' %>
+              </span>
+            </td>
+            <td class="px-6 py-4 space-x-2">
+              <!-- Complete Button -->
+              <% if (!todo.completed) { %>
+                <form action="/user/completeTodo/<%= todo._id %>?_method=PATCH" method="POST" style="display:inline;">
+                  <button type="submit"
+                    class="bg-blue-500 hover:bg-blue-600 text-white py-1 px-3 rounded-lg shadow-md focus:outline-none transition-all duration-300 transform hover:scale-105">
+                    Complete
+                  </button>
+                </form>
+              <% } %>
+              <!-- Edit Button -->
+              <form action="/user/editTodo/<%= todo._id %>" method="GET" style="display:inline;">
+                <button type="submit"
+                  class="bg-yellow-500 hover:bg-yellow-600 text-white py-1 px-3 rounded-lg shadow-md focus:outline-none transition-all duration-300 transform hover:scale-105">
+                  Edit
+                </button>
+              </form>
+              <!-- Delete Button -->
+              <form action="/user/deleteTodo/<%= todo._id %>?_method=DELETE" method="POST" style="display:inline;">
+                <button type="submit"
+                  class="bg-red-500 hover:bg-red-600 text-white py-1 px-3 rounded-lg shadow-md focus:outline-none transition-all duration-300 transform hover:scale-105">
+                  Delete
+                </button>
+              </form>
+            </td>
+          </tr>
+        <% }); %>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Back to Create Task Link -->
+  <a href="/user/createTodo"
+    class="mt-8 inline-block bg-green-500 hover:bg-green-600 text-white font-medium py-3 px-6 rounded-lg shadow-md focus:outline-none transition-all duration-300 transform hover:scale-105">
+    Create New Todo
+  </a>
+
+</body>
+</html>
